@@ -12,7 +12,7 @@ body, html {
 app-root {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 80px auto;
+  grid-template-rows: 62px auto;
   height: 100%;
   width: 100%;
 }

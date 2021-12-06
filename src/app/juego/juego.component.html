@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="card">
+
+<!--    <div class="puntaje">-->
+<!--        <span>{{correctas}} / {{totales}}</span>-->
+<!--    </div>-->
+
+    <div class="pregunta" *ngIf="pregunta">
+
+      <div class="enunciado" *ngIf="pregunta.pregunta" [ngClass]="{'grande': pregunta.tipo === 'T'}">
+        <span>{{pregunta.pregunta}}</span>
+      </div>
+
+      <div class="enunciado" *ngIf="pregunta?.formula">
+        <app-formula [equation]="pregunta.formula || ''"></app-formula>
+      </div>
+
+
+      <div *ngIf="pregunta?.imagen" class="encabezado">
+        <img class="imagen-encabezado" [src]="pregunta.imagen">
+      </div>
+
+      <div *ngIf="pregunta?.tipo === 'E'"  class="respuestasSiNo">
+
+        <button class="btn btnSi" (click)="sendSi()">
+          <fa-icon [icon]="faEquals"></fa-icon>
+        </button>
+
+        <button class="btn btnNo" (click)="sendNo()">
+          <fa-icon [icon]="faNotEqual"></fa-icon>
+        </button>
+
+      </div>
+
+      <div *ngIf="pregunta?.tipo === 'S'" class="respuestasSiNo">
+
+        <button class="btn btnSi" (click)="sendSi()">
+          <fa-icon [icon]="faThumbsUp"></fa-icon>
+        </button>
+
+        <button class="btn btnNo" (click)="sendNo()">
+          <fa-icon [icon]="faThumbsDown"></fa-icon>
+        </button>
+
+      </div>
+
+      <div class="imagenes">
+
+        <button class="imagen"
+                *ngFor="let imagen of pregunta.imagenes; index as i"
+                [ngClass]="{
+                'incorrecta': resultado === false,
+                'activo': respuesta === i,
+                'correcta': opcionCorrecta === i && resultado === false
+                }"
+                (click)="setRespuesta(i)">
+          <div>
+            <img [src]="imagen">
+          </div>
+        </button>
+
+      </div>
+
+      <div class="opciones">
+
+        <button class="opcion"
+                *ngFor="let opcion of pregunta.opciones; index as i"
+                [ngClass]="{
+                'incorrecta': resultado === false,
+                'activo': respuesta === i,
+                'correcta': opcionCorrecta === i && resultado === false
+                }"
+                (click)="setRespuesta(i)">
+          <div>
+            <span class="text-opcion">{{opcion}}</span>
+          </div>
+        </button>
+
+      </div>
+
+      <div class="opciones" *ngIf="pregunta?.valor">
+
+        <input class="opcion" [(ngModel)]="respuestaText"
+               (keyup)="onKeyInput($event)"
+               placeholder="Respuesta">
+
+      </div>
+
+    </div>
+
+    <div class="footer">
+
+      <button *ngIf="resultado === undefined && (pregunta?.opciones?.length || pregunta?.valor || pregunta?.imagenes?.length)"
+              class="btn btnSend" (click)="enviarRespuesta()">
+        <fa-icon [icon]="faPaperPlane"></fa-icon>
+      </button>
+
+      <button *ngIf="resultado !== undefined || pregunta?.tipo === 'P'"
+              class="btn siguiente" (click)="siguiente()">
+        <fa-icon [icon]="faArrowRight"></fa-icon>
+      </button>
+
+      <button class="btn correcto" *ngIf="resultado === true">
+        <fa-icon [icon]="faCheck"></fa-icon>
+      </button>
+
+      <button class="btn incorrecto" *ngIf="resultado === false">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+
+      <button class="btn btnBig incorrecto" *ngIf="resultado === false && solucion">
+        <span>{{solucion}}</span>
+      </button>
+
+
+    </div>
+
+  </div>
+
+</div>

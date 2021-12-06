@@ -1,0 +1,168 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 32px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 100px;
+  background-color: rgba(255, 242, 205, 1);
+  margin: 20px;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.pregunta {
+  margin: 20px;
+  padding: 20px;
+  color: #494848;
+}
+
+.enunciado {
+  margin: 0 12.5% 40px 12.5%;
+  width: 75%;
+  text-align: center;
+  color: rgb(43 77 157);
+  font-family: system-ui;
+}
+
+.grande {
+  font-size: 1.5em;
+}
+
+.encabezado {
+  display: grid;
+  justify-content: center;
+  margin: 20px 0;
+  color: rgb(43 77 157);
+  font-family: system-ui;
+}
+
+/*.imagen-encabezado {*/
+/*  max-height: 350px;*/
+/*}*/
+
+.opciones {
+  display: flex;
+  flex-flow: column;
+}
+
+.opcion {
+  padding: 10px;
+  font-size: 1em;
+  background-color: white;
+  border-radius: 10px;
+  border-width: 0px;
+  margin: 10px auto;
+  width: auto;
+  color: #558ac7;
+}
+
+.incorrecta.activo {
+  background-color: #de5e5e;
+  color: white;
+}
+
+.correcta {
+  background-color: #398a3d;
+  color: white;
+}
+
+input.opcion {
+  text-align: center;
+}
+
+.activo {
+  background-color: aquamarine;
+}
+
+.text-opcion {
+  margin: 0 50px;
+}
+
+.correcto {
+  background-color: green;
+}
+
+.incorrecto {
+  background-color: red;
+}
+
+.siguiente {
+  background-color: dodgerblue;
+}
+
+.btn {
+  border-radius: 10px;
+  color: white;
+  border-width: 0;
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+}
+
+.btnBig {
+  width: 200px;
+}
+
+.btnSend {
+  background-color: #76c1ef;
+}
+
+.puntaje {
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row-reverse;
+}
+
+
+.btnSi {
+  background-color: #339633;
+}
+
+.btnNo {
+  background-color: #cc4747;
+}
+
+.respuestasSiNo {
+  margin-top: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 20px;
+  justify-content: center;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row-reverse;
+  gap: 10px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+
+.imagenes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.imagen {
+  width: 12%;
+  margin: 10px;
+  border-radius: 10px;
+  border-width: 0;
+}
+
+.imagenes img {
+  max-width: 100%;
+}
